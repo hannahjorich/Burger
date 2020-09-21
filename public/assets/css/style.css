@@ -1,3 +1,4 @@
+
 li {
     padding: 15px;
     margin: 15px;
@@ -10,14 +11,7 @@ li {
     text-align: center;
 }
 
-.right {
-    align-content: right;
-}
 
-.create-update-form {
-    padding: 25px;
-    margin: 25px;
-  }
   .btn-primary {
     border-radius: 10px;
 }
