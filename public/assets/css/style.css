@@ -1,0 +1,27 @@
+li {
+    padding: 15px;
+    margin: 15px;
+    font-style: normal;
+    list-style: none;
+    
+  }
+
+  .center {
+    text-align: center;
+}
+
+.right {
+    align-content: right;
+}
+
+.create-update-form {
+    padding: 25px;
+    margin: 25px;
+  }
+  .btn-primary {
+    border-radius: 10px;
+}
+  
+  .form-group {
+    margin-bottom: 35px;
+  }
