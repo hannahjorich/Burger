@@ -33,66 +33,30 @@ function objToSql(ob) {
 
 // Object for all our SQL statement functions.
 var orm = {
-  selectAll: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
+  selectAll: function(table, cb){
+    const query = `SELECT * FROM ${table};`
+    connection.query(query, function(err, res){
+      if (err) throw err;
+
+      cb(res);
     });
   },
-  insertOne: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
+  insertOne: function(table, cols, vals, cb){
+    const query = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`
+    connection.query(query, function(err, res){
+      if (err) throw err;
 
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
-
-    console.log(queryString);
-
-    connection.query(queryString, vals, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
-      cb(result);
+      cb(res);
     });
   },
+  updateOne: function(table, objColVals, condition, cb){
+    const query = `UPDATE ${table} SET ${objToSql(objColVals)} WHERE ${condition};`
+    connection.query(query, function(err, res){
+      if (err) throw err;
 
-  updateOne: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
-
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
-
-    console.log(queryString);
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
-
-      cb(result);
+      cb(res);
     });
-  },
-  // delete: function(table, condition, cb) {
-  //   var queryString = "DELETE FROM " + table;
-  //   queryString += " WHERE ";
-  //   queryString += condition;
-
-  //   connection.query(queryString, function(err, result) {
-  //     if (err) {
-  //       throw err;
-  //     }
-
-  //     cb(result);
-  //   });
-  // }
+  },  
 };
 
 module.exports = orm;
