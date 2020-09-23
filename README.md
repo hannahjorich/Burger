@@ -6,9 +6,10 @@ Eat-Da-Burger! is a restaurant app that lets users input the names of burgers th
 
 ## Demo 
 
-```
-Still in progress
-```
+
+Link: https://burger-app-jorich.herokuapp.com/
+
+
 ## Resources 
 
 Node JS, MYSQL, MYSQL Workbench, inquirer 
@@ -24,3 +25,7 @@ npm install inquirer
 npm install dotenv
 npm install handlebars
 ```
+
+## Opportunity for Future Deployment
+
+I didn't have time to style this application before I had to submit it for homework. There is opportunity to make the front-end of this application more appealing.
